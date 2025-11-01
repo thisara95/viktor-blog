@@ -12,11 +12,11 @@ const ImageFormatSchema = z.object({
 const AvatarSchema = z.object({
   id: z.number(),
   name: z.string(),
-  alternativeText: z.string().optional(),
+  alternativeText: z.string().nullable().optional(),
   url: z.string(),
   formats: z.object({
     thumbnail: ImageFormatSchema.optional(),
-  }).optional(),
+  }).nullable().optional(),
 });
 
 // Author schema
@@ -25,32 +25,32 @@ export const AuthorSchema = z.object({
   full_name: z.string(),
   created_at: z.string(),
   updated_at: z.string(),
-  avatar: AvatarSchema.optional(),
+  avatar: AvatarSchema.nullable().optional(),
 });
 
 // Blog post category schema
 export const BlogPostCategorySchema = z.object({
   id: z.number(),
   name: z.string(),
-  slug: z.string().optional(),
-  created_at: z.string().optional(),
-  updated_at: z.string().optional(),
+  slug: z.string().nullable().optional(),
+  created_at: z.string().nullable().optional(),
+  updated_at: z.string().nullable().optional(),
 });
 
 // Cover image schema
 const CoverImageSchema = z.object({
   id: z.number(),
   name: z.string(),
-  alternativeText: z.string().optional(),
+  alternativeText: z.string().nullable().optional(),
   url: z.string(),
-  width: z.number().optional(),
-  height: z.number().optional(),
+  width: z.number().nullable().optional(),
+  height: z.number().nullable().optional(),
   formats: z.object({
     thumbnail: ImageFormatSchema.optional(),
     small: ImageFormatSchema.optional(),
     medium: ImageFormatSchema.optional(),
     large: ImageFormatSchema.optional(),
-  }).optional(),
+  }).nullable().optional(),
 });
 
 // Blog post schema
@@ -58,19 +58,19 @@ export const BlogPostSchema = z.object({
   id: z.number(),
   title: z.string(),
   slug: z.string(),
-  excerpt: z.string().optional(),
-  body: z.string().optional(),
-  intro: z.string().optional(),
+  excerpt: z.string().nullable().optional(),
+  body: z.string().nullable().optional(),
+  intro: z.string().nullable().optional(),
   publication_date: z.string(),
   created_at: z.string(),
   updated_at: z.string(),
-  published_at: z.string().optional(),
-  is_long_post: z.boolean().optional(),
-  meta_title: z.string().optional(),
-  meta_description: z.string().optional(),
-  cover: CoverImageSchema.optional(),
-  author: AuthorSchema.optional(),
-  blogpost_categories: z.array(BlogPostCategorySchema).optional(),
+  published_at: z.string().nullable().optional(),
+  is_long_post: z.boolean().nullable().optional(),
+  meta_title: z.string().nullable().optional(),
+  meta_description: z.string().nullable().optional(),
+  cover: CoverImageSchema.nullable().optional(),
+  author: AuthorSchema.nullable().optional(),
+  blogpost_categories: z.array(BlogPostCategorySchema).nullable().optional(),
 });
 
 // Array schemas for API responses
